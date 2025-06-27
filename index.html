@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ibrahim Mustafa - Web Designer Portfolio | Innovation & Creativity</title>
+    <meta name="description" content="Ibrahim Mustafa - Creative web designer who loves innovation. Explore my portfolio of interactive web applications including password generators, encryption tools, focus apps, and e-commerce solutions.">
+    
+    <!-- Open Graph tags -->
+    <meta property="og:title" content="Ibrahim Mustafa - Web Designer Portfolio">
+    <meta property="og:description" content="Creative web designer specializing in innovative, interactive web applications and modern user experiences.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ibrahimmustafacv.github.io/">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <style>
+        :root {
+            --background: hsl(240, 10%, 3.9%);
+            --foreground: hsl(0, 0%, 98%);
+            --muted: hsl(240, 3.7%, 15.9%);
+            --muted-foreground: hsl(240, 5%, 64.9%);
+            --border: hsl(240, 3.7%, 15.9%);
+            --primary: hsl(207, 90%, 54%);
+            --primary-foreground: hsl(211, 100%, 99%);
+            --radius: 0.5rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: var(--background);
+            color: var(--foreground);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 50;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, hsl(207, 90%, 54%), hsl(262, 83%, 58%), hsl(45, 93%, 47%));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--foreground);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: hsl(207, 90%, 54%);
+        }
+
+        .cta-button {
+            display: none;
+            background: linear-gradient(to right, hsl(207, 90%, 54%), hsl(262, 83%, 58%));
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 9999px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+        }
+
+        .mobile-menu-btn {
+            color: white;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+        }
+
+        .mobile-menu.open {
+            display: block;
+        }
+
+        .mobile-menu a {
+            display: block;
+            color: var(--foreground);
+            text-decoration: none;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(rgba(26, 26, 26, 0.8), rgba(15, 20, 25, 0.9)), url('https://images.unsplash.com/photo-1541961017774-22349e4a1262?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&h=1080');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .floating-shapes::before,
+        .floating-shapes::after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(45deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .floating-shapes::before {
+            top: 10%;
+            left: 10%;
+            animation-delay: -2s;
+        }
+
+        .floating-shapes::after {
+            bottom: 10%;
+            right: 10%;
+            animation-delay: -4s;
+        }
+
+        .hero-content {
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero-title {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, hsl(207, 90%, 54%), hsl(262, 83%, 58%), hsl(45, 93%, 47%));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.25rem, 4vw, 1.5rem);
+            margin-bottom: 2rem;
+            color: hsl(240, 5%, 64.9%);
+            animation: slideUp 0.8s ease-out 0.2s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+            animation: slideUp 0.8s ease-out 0.4s both;
+        }
+
+        .btn-primary {
+            background: linear-gradient(to right, hsl(207, 90%, 54%), hsl(262, 83%, 58%));
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 9999px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.125rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 9999px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.125rem;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: scale(1.05);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 3rem);
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, hsl(207, 90%, 54%), hsl(262, 83%, 58%), hsl(45, 93%, 47%));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-divider {
+            width: 6rem;
+            height: 0.25rem;
+            background: linear-gradient(to right, hsl(207, 90%, 54%), hsl(262, 83%, 58%));
+            margin: 0 auto 4rem;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .about-image {
+            width: 100%;
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            transition: transform 0.5s;
+        }
+
+        .about-image:hover {
+            transform: scale(1.05);
+        }
+
+        .about-text h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.875rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .about-text p {
+            font-size: 1.125rem;
+            color: hsl(240, 5%, 64.9%);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .skill-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .skill-icon {
+            margin: 0 auto 1rem;
+            color: hsl(207, 90%, 54%);
+        }
+
+        .skill-card h4 {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-card p {
+            font-size: 0.875rem;
+            color: hsl(240, 5%, 64.9%);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: all 0.3s;
+            group: true;
+        }
+
+        .project-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 12rem;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.1);
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            transition: color 0.3s;
+        }
+
+        .project-description {
+            color: hsl(240, 5%, 64.9%);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .project-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .project-category {
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+        }
+
+        .cta-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(59, 130, 246, 0.3);
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .cta-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .contact-info h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info p {
+            color: hsl(240, 5%, 64.9%);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-icon {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 1rem;
+        }
+
+        .contact-card h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-card p {
+            color: hsl(240, 5%, 64.9%);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .contact-card .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin: 0 auto;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 2rem 0;
+            background: rgba(17, 24, 39, 0.5);
+            backdrop-filter: blur(4px);
+            border-top: 1px solid hsl(240, 3.7%, 15.9%);
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .footer-text {
+            color: hsl(240, 5%, 64.9%);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-links a {
+            color: hsl(240, 5%, 64.9%);
+            transition: all 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            transform: scale(1.1);
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 53%, 80%, 100% { transform: translate(-50%, 0); }
+            40%, 43% { transform: translate(-50%, -30px); }
+            70% { transform: translate(-50%, -15px); }
+            90% { transform: translate(-50%, -4px); }
+        }
+
+        @keyframes glow {
+            from { box-shadow: 0 0 20px hsl(207, 90%, 54%); }
+            to { box-shadow: 0 0 30px hsl(262, 83%, 58%), 0 0 40px hsl(207, 90%, 54%); }
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+
+            .cta-button {
+                display: block;
+            }
+
+            .mobile-menu-btn {
+                display: none;
+            }
+
+            .hero-buttons {
+                flex-direction: row;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer-content {
+                flex-direction: row;
+            }
+        }
+
+        /* Utility Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Category Colors */
+        .bg-blue { background-color: rgba(59, 130, 246, 0.2); color: rgb(96, 165, 250); }
+        .bg-purple { background-color: rgba(139, 92, 246, 0.2); color: rgb(168, 85, 247); }
+        .bg-green { background-color: rgba(34, 197, 94, 0.2); color: rgb(74, 222, 128); }
+        .bg-red { background-color: rgba(239, 68, 68, 0.2); color: rgb(248, 113, 113); }
+        .bg-yellow { background-color: rgba(245, 158, 11, 0.2); color: rgb(251, 191, 36); }
+
+        .text-blue { color: rgb(96, 165, 250); }
+        .text-purple { color: rgb(168, 85, 247); }
+        .text-green { color: rgb(74, 222, 128); }
+        .text-red { color: rgb(248, 113, 113); }
+        .text-yellow { color: rgb(251, 191, 36); }
+    </style>
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script>
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(async function(OneSignal) {
+    await OneSignal.init({
+      appId: "cb70835f-1e5d-4566-ac4d-b660f266fed6",
+      safari_web_id: "web.onesignal.auto.215a98b6-2876-4938-a894-401760de5038",
+      notifyButton: {
+        enable: true,
+      },
+    });
+  });
+</script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo" onclick="scrollToSection('home')">Ibrahim Mustafa</div>
+                
+                <div class="nav-links">
+                    <a href="#home" onclick="scrollToSection('home')">Home</a>
+                    <a href="#about" onclick="scrollToSection('about')">About</a>
+                    <a href="#projects" onclick="scrollToSection('projects')">Projects</a>
+                    <a href="#contact" onclick="scrollToSection('contact')">Contact</a>
+                </div>
+                
+                <a href="https://ibrahimmustafacv.github.io/my-social-media-page/" target="_blank" rel="noopener noreferrer" class="cta-button">Book Your Project</a>
+                
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+            
+            <div class="mobile-menu" id="mobileMenu">
+                <a href="#home" onclick="scrollToSection('home')">Home</a>
+                <a href="#about" onclick="scrollToSection('about')">About</a>
+                <a href="#projects" onclick="scrollToSection('projects')">Projects</a>
+                <a href="#contact" onclick="scrollToSection('contact')">Contact</a>
+                <a href="https://ibrahimmustafacv.github.io/my-social-media-page/" target="_blank" rel="noopener noreferrer" class="btn-primary" style="margin-top: 1rem; text-align: center;">Book Your Project</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="floating-shapes"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Ibrahim Mustafa</h1>
+                <p class="hero-subtitle">Web designer who loves innovation</p>
+                <div class="hero-buttons">
+                    <button class="btn-primary" onclick="scrollToSection('projects')">Explore My Work</button>
+                    <a href="https://github.com/ibrahimmustafacv" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+                        <i data-lucide="github"></i>
+                        GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <i data-lucide="chevron-down" style="color: hsl(207, 90%, 54%);"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="reveal">
+                <h2 class="section-title">About Me</h2>
+                <div class="section-divider"></div>
+            </div>
+            
+            <div class="about-grid">
+                <div class="reveal">
+                    <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" alt="Web development workspace with multiple monitors showing code" class="about-image">
+                </div>
+                
+                <div class="about-text reveal">
+                    <h3>Creative Developer & Innovation Enthusiast</h3>
+                    <p>I'm Ibrahim Mustafa, a passionate web designer who believes in the power of innovation to transform digital experiences. With a keen eye for aesthetics and a deep understanding of modern web technologies, I create interfaces that not only look stunning but also deliver exceptional user experiences.</p>
+                    <p>My journey in web design is driven by curiosity and the constant pursuit of pushing boundaries. From interactive animations to responsive designs, I craft digital solutions that resonate with users and achieve business goals.</p>
+                    
+                    <div class="skills-grid">
+                        <div class="skill-card">
+                            <i data-lucide="code" class="skill-icon" style="color: rgb(96, 165, 250);"></i>
+                            <h4>Clean Code</h4>
+                            <p>Semantic & maintainable</p>
+                        </div>
+                        <div class="skill-card">
+                            <i data-lucide="smartphone" class="skill-icon" style="color: rgb(168, 85, 247);"></i>
+                            <h4>Responsive</h4>
+                            <p>Mobile-first approach</p>
+                        </div>
+                        <div class="skill-card">
+                            <i data-lucide="palette" class="skill-icon" style="color: rgb(251, 191, 36);"></i>
+                            <h4>Creative Design</h4>
+                            <p>Innovative & artistic</p>
+                        </div>
+                        <div class="skill-card">
+                            <i data-lucide="rocket" class="skill-icon" style="color: rgb(74, 222, 128);"></i>
+                            <h4>Performance</h4>
+                            <p>Fast & optimized</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section" style="background: linear-gradient(45deg, rgba(59, 130, 246, 0.05), rgba(139, 92, 246, 0.05));">
+        <div class="container">
+            <div class="reveal">
+                <h2 class="section-title">Featured Projects</h2>
+                <p style="text-align: center; font-size: 1.25rem; color: hsl(240, 5%, 64.9%); margin-bottom: 2rem;">Discover my latest work and creative solutions</p>
+                <div class="section-divider"></div>
+            </div>
+            
+            <div class="projects-grid">
+                <!-- Project 1: Password Generator -->
+                <div class="project-card reveal">
+                    <img src="https://images.unsplash.com/photo-1633265486064-086b219458ec?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" alt="Your Password in Your Pocket" class="project-image">
+                    <div class="project-content">
+                        <h3 class="project-title text-blue">Your Password in Your Pocket</h3>
+                        <p class="project-description">Advanced password generator with customizable security levels, from simple to ultra-secure random passwords. Features Arabic interface and multiple security options.</p>
+                        <div class="project-footer">
+                            <span class="project-category bg-blue">Security Tool</span>
+                            <a href="https://ibrahimmustafacv.github.io/password/" target="_blank" rel="noopener noreferrer" class="text-blue">
+                                <i data-lucide="external-link"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Encryption Converter -->
+                <div class="project-card reveal">
+                    <img src="https://images.unsplash.com/photo-1614064641938-3bbee52942c7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" alt="Encryption Converter" class="project-image">
+                    <div class="project-content">
+                        <h3 class="project-title text-purple">Encryption Converter</h3>
+                        <p class="project-description">Multi-format encryption tool supporting numbers, symbols, and English words. Features real-time character counting and operation statistics.</p>
+                        <div class="project-footer">
+                            <span class="project-category bg-purple">Crypto Tool</span>
+                            <a href="https://ibrahimmustafacv.github.io/Encryption/" target="_blank" rel="noopener noreferrer" class="text-purple">
+                                <i data-lucide="external-link"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Focus Room -->
+                <div class="project-card reveal">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" alt="Focus Room" class="project-image">
+                    <div class="project-content">
+                        <h3 class="project-title text-green">Focus Room</h3>
+                        <p class="project-description">Pomodoro timer with ambient music, motivational quotes, and distraction blockers. Track productivity with daily statistics and streak counters.</p>
+                        <div class="project-footer">
+                            <span class="project-category bg-green">Productivity</span>
+                            <a href="https://ibrahimmustafacv.github.io/FocusNest/" target="_blank" rel="noopener noreferrer" class="text-green">
+                                <i data-lucide="external-link"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: Cinema in Your Home -->
+                <div class="project-card reveal">
+                    <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" alt="Cinema in Your Home" class="project-image">
+                    <div class="project-content">
+                        <h3 class="project-title text-red">Cinema in Your Home</h3>
+                        <p class="project-description">Curated collection of premium streaming platforms for movies and TV series. Features categorized browsing and quality ratings for each platform.</p>
+                        <div class="project-footer">
+                            <span class="project-category bg-red">Entertainment</span>
+                            <a href="https://ibrahimmustafacv.github.io/cenma-fy-betk/" target="_blank" rel="noopener noreferrer" class="text-red">
+                                <i data-lucide="external-link"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5: Apex -->
+                <div class="project-card reveal">
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" alt="Apex" class="project-image">
+                    <div class="project-content">
+                        <h3 class="project-title text-yellow">Apex</h3>
+                        <p class="project-description">Premium athletic footwear e-commerce with category filtering, featured products showcase, and modern shopping cart functionality.</p>
+                        <div class="project-footer">
+                            <span class="project-category bg-yellow">E-commerce</span>
+                            <a href="https://ibrahimmustafacv.github.io/Apex/" target="_blank" rel="noopener noreferrer" class="text-yellow">
+                                <i data-lucide="external-link"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTA Card -->
+                <div class="cta-card reveal">
+                    <div>
+                        <i data-lucide="plus" style="color: rgb(96, 165, 250); font-size: 3rem; margin-bottom: 1rem;"></i>
+                        <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; font-weight: 700; margin-bottom: 0.75rem;">Start Your Project</h3>
+                        <p style="color: hsl(240, 5%, 64.9%); margin-bottom: 1.5rem;">Ready to bring your ideas to life? Let's create something amazing together.</p>
+                        <a href="https://ibrahimmustafacv.github.io/my-social-media-page/" target="_blank" rel="noopener noreferrer" class="btn-primary">Get Started</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section" style="background: linear-gradient(rgba(26, 26, 26, 0.9), rgba(15, 20, 25, 0.9)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&h=1080'); background-size: cover; background-position: center; background-attachment: fixed;">
+        <div class="container">
+            <div class="reveal">
+                <h2 class="section-title">Let's Create Together</h2>
+                <p style="text-align: center; font-size: 1.25rem; color: hsl(240, 5%, 64.9%); margin-bottom: 2rem;">Ready to start your next project? Get in touch and let's make it happen.</p>
+                <div class="section-divider"></div>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="contact-info reveal">
+                    <h3>Get In Touch</h3>
+                    <p>I'm always excited to work on new projects and collaborate with creative minds. Whether you have a specific vision or just an idea, let's discuss how we can turn it into a remarkable digital experience.</p>
+                    
+                    <div class="contact-links">
+                        <div class="contact-link">
+                            <div class="contact-icon" style="background: linear-gradient(to right, hsl(207, 90%, 54%), hsl(262, 83%, 58%));">
+                                <i data-lucide="github"></i>
+                            </div>
+                            <div>
+                                <h4 style="font-weight: 600;">GitHub</h4>
+                                <a href="https://github.com/ibrahimmustafacv" target="_blank" rel="noopener noreferrer" style="color: hsl(240, 5%, 64.9%); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='rgb(96, 165, 250)'" onmouseout="this.style.color='hsl(240, 5%, 64.9%)'">@ibrahimmustafacv</a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-link">
+                            <div class="contact-icon" style="background: linear-gradient(to right, hsl(262, 83%, 58%), hsl(315, 100%, 60%));">
+                                <i data-lucide="mail"></i>
+                            </div>
+                            <div>
+                                <h4 style="font-weight: 600;">Contact Page</h4>
+                                <a href="https://ibrahimmustafacv.github.io/my-social-media-page/" target="_blank" rel="noopener noreferrer" style="color: hsl(240, 5%, 64.9%); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='rgb(168, 85, 247)'" onmouseout="this.style.color='hsl(240, 5%, 64.9%)'">Social Media & Contact</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-card reveal">
+                    <h3>Ready to Start?</h3>
+                    <p>Click the button below to access my contact information and social media profiles.</p>
+                    
+                    <div style="text-align: center;">
+                        <a href="https://ibrahimmustafacv.github.io/my-social-media-page/" target="_blank" rel="noopener noreferrer" class="cta-button">
+                            <i data-lucide="rocket"></i>
+                            Book Your Project
+                        </a>
+                    </div>
+                    
+                    <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid hsl(240, 3.7%, 15.9%);">
+                        <p style="text-align: center; color: hsl(240, 5%, 64.9%); font-size: 0.875rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                            <i data-lucide="heart" style="color: rgb(248, 113, 113);"></i>
+                            Let's build something amazing together
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-text">
+                    © 2024 Ibrahim Mustafa. Crafted with 
+                    <i data-lucide="heart" style="color: rgb(248, 113, 113); margin: 0 0.25rem;"></i>
+                    and innovation.
+                </div>
+                
+                <div class="footer-links">
+                    <a href="https://github.com/ibrahimmustafacv" target="_blank" rel="noopener noreferrer">
+                        <i data-lucide="github"></i>
+                    </a>
+                    <a href="https://ibrahimmustafacv.github.io/my-social-media-page/" target="_blank" rel="noopener noreferrer">
+                        <i data-lucide="globe"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('open');
+        }
+
+        // Smooth scrolling
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+                // Close mobile menu if open
+                const menu = document.getElementById('mobileMenu');
+                menu.classList.remove('open');
+            }
+        }
+
+        // Reveal animation on scroll
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll('.reveal');
+            
+            reveals.forEach(reveal => {
+                const windowHeight = window.innerHeight;
+                const elementTop = reveal.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    reveal.classList.add('show');
+                }
+            });
+        }
+
+        // Parallax effect
+        function parallaxEffect() {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.hero');
+            
+            parallaxElements.forEach(element => {
+                const speed = 0.5;
+                element.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        }
+
+        // Page load animation
+        function pageLoadAnimation() {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease-in-out';
+            
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        }
+
+        // Event listeners
+        window.addEventListener('scroll', () => {
+            revealOnScroll();
+            parallaxEffect();
+        });
+
+        window.addEventListener('load', () => {
+            pageLoadAnimation();
+            revealOnScroll();
+        });
+
+        // Initialize animations
+        revealOnScroll();
+    </script>
+</body>
+</html>
